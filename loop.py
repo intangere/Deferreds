@@ -72,10 +72,7 @@ class Deferred():
 			self._init = True
 			self._call_result = callable[0](callable[1], callable[2])
 		else:
-			if callable[1]:
-				self._call_result = callable[0](self._call_result, *callable[1], **callable[2])
-			else:
-				self._call_result = callable[0](self._call_result, *callable[1], **callable[2])
+			self._call_result = callable[0](self._call_result, *callable[1], **callable[2])
 
 		if isinstance(self._call_result, Deferred):
 			raise Exception('Warning: Deferred returned from a Deferred has an inaccessible result.')
